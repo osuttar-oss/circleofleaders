@@ -1,8 +1,9 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useId, useState } from "react";
 
 export default function InterestForm() {
+  const formId = useId();
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -45,24 +46,24 @@ export default function InterestForm() {
   return (
     <form className="interest-form" onSubmit={handleSubmit}>
       <div className="field">
-        <label htmlFor="name">Your name</label>
-        <input id="name" name="name" autoComplete="name" required maxLength={100} placeholder="Full name" />
+        <label htmlFor={`${formId}-name`}>Your name</label>
+        <input id={`${formId}-name`} name="name" autoComplete="name" required maxLength={100} placeholder="Full name" />
       </div>
       <div className="field">
-        <label htmlFor="email">Work email</label>
-        <input id="email" name="email" type="email" autoComplete="email" required maxLength={254} placeholder="you@company.com" />
+        <label htmlFor={`${formId}-email`}>Work email</label>
+        <input id={`${formId}-email`} name="email" type="email" autoComplete="email" required maxLength={254} placeholder="you@company.com" />
       </div>
       <div className="field">
-        <label htmlFor="role">Your role</label>
-        <input id="role" name="role" autoComplete="organization-title" required maxLength={120} placeholder="e.g. CFO" />
+        <label htmlFor={`${formId}-role`}>Your role</label>
+        <input id={`${formId}-role`} name="role" autoComplete="organization-title" required maxLength={120} placeholder="e.g. CFO" />
       </div>
       <div className="field">
-        <label htmlFor="company">Company</label>
-        <input id="company" name="company" autoComplete="organization" required maxLength={150} placeholder="Company name" />
+        <label htmlFor={`${formId}-company`}>Company</label>
+        <input id={`${formId}-company`} name="company" autoComplete="organization" required maxLength={150} placeholder="Company name" />
       </div>
       <div className="field field-full">
-        <label htmlFor="event">Gathering you are interested in</label>
-        <select id="event" name="event" defaultValue="london-2026" required>
+        <label htmlFor={`${formId}-event`}>Gathering you are interested in</label>
+        <select id={`${formId}-event`} name="event" defaultValue="london-2026" required>
           <option value="london-2026">CFO London Edition · 3 December 2026</option>
           <option value="london-2027-april">CFO London Edition · 8 April 2027</option>
           <option value="frankfurt-2027">CFO DACH Edition · 23 September 2027</option>
